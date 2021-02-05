@@ -23,9 +23,9 @@
 
 		<select class="pet-color mb-2" aria-label="pick your pets color" name="petColor" id="petColor">
 			<option selected>Choose a pet color</option>
-			<option value="red">Red</option>
-			<option value="green">Green</option>
-			<option value="blue">Blue</option>
+			<repeat group="{{ @colors }}" value="{{ @colorOption }}">
+				<option>{{ @colorOption }}</option>
+			</repeat>
 		</select>
 		<br>
 		<input type="submit" id="submit-order" value="Place Order">

@@ -28,9 +28,22 @@ $f3->route('GET /', function () {
 	echo $view->render("views/pet-home.html");
 });
 
-$f3->route('GET /order', function () {
-	$view = new Template();
-	echo $view->render("views/pet-order.html");
+$f3->route('GET|POST /order', function($f3) {
+
+  //Check to see if the form has been posted
+  if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    //validate the data
+    if(empty($_POST['pet'])){
+      return false;
+    } else {
+      return true;
+    }
+  }
+  $colors = getColors();
+  $f3->set('colors', $colors);
+
+  $view = new Template();
+  echo $view->render("views/pet-order.html");
 });
 
 $f3->route('POST /order2', function () {
