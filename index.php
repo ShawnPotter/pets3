@@ -46,15 +46,21 @@ $f3->route('GET|POST /order', function($f3) {
   echo $view->render("views/pet-order.html");
 });
 
-$f3->route('POST /order2', function () {
+$f3->route('POST /order2', function($f3) {
 	if(isset($_POST['petType'])){
 	  $_SESSION['petType'] = $_POST['petType'];
   }
   if(isset($_POST['petColor'])){
     $_SESSION['petColor'] = $_POST['petColor'];
   }
-	$view = new Template();
-	echo $view->render("views/pet-order2.html");
+
+	$sizes = getSizes();
+	$accessories = getAccessories();
+  $f3->set('sizes', $sizes);
+  $f3->set('accessories', $accessories);
+
+  $view = new Template();
+  echo $view->render("views/pet-order2.html");
 });
 
 $f3->route('POST /order3', function () {
@@ -74,4 +80,3 @@ $f3->route('POST /summary', function () {
 });
 
 $f3->run();
-
