@@ -1,7 +1,8 @@
 <?php
 /**
  * @authors Shawn Potter & Ryan Hendrickson
- * @version https://github.com/rynhndrcksn/pets2
+ * @version 1.0
+ * https://github.com/ShawnPotter/pets3
  * more pets
  */
 

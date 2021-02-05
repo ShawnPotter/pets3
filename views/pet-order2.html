@@ -26,6 +26,9 @@
         <label for="{{ @size }}">{{ @size }}</label><br>
       </repeat>
     </div>
+    <fieldset>
+      <legend>Pet Accessories:</legend>
+    </fieldset>
     <div class="form-group">
       <repeat group="{{ @accessories }}" value="{{ @accessory }}">
         <input type="checkbox" name="{{ @accessory }}" id="{{ @accessory }}">
