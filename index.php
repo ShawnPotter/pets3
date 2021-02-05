@@ -16,6 +16,7 @@ session_start();
 
 // Require the autoload file
 require_once('vendor/autoload.php');
+require_once('model/data-layer.php');
 
 $f3 = Base::instance();
 
