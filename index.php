@@ -3,7 +3,7 @@
  * @authors Shawn Potter & Ryan Hendrickson
  * @version 1.0
  * https://github.com/ShawnPotter/pets3
- * more pets
+ * revising pets to have a proper model layer and adding more data manipulation
  */
 
 // This is our Controller
@@ -40,14 +40,15 @@ $f3->route('GET|POST /order', function($f3) {
       return true;
     }
   }
-  $colors = getColors();
-  $f3->set('colors', $colors);
+
+  $f3->set('colors', getColors());
 
   $view = new Template();
   echo $view->render("views/pet-order.html");
 });
 
 $f3->route('POST /order2', function($f3) {
+	// gather pet type and color
 	if(isset($_POST['petType'])){
 	  $_SESSION['petType'] = $_POST['petType'];
   }
@@ -55,27 +56,31 @@ $f3->route('POST /order2', function($f3) {
     $_SESSION['petColor'] = $_POST['petColor'];
   }
 
-	$sizes = getSizes();
-	$accessories = getAccessories();
-  $f3->set('sizes', $sizes);
-  $f3->set('accessories', $accessories);
+  $f3->set('sizes', getSizes());
+  $f3->set('accessories', getAccessories());
 
   $view = new Template();
   echo $view->render("views/pet-order2.html");
 });
 
 $f3->route('POST /order3', function () {
-  if(isset($_POST['petName'])){
-    $_SESSION['petName'] = $_POST['petName'];
-  }
+	// gather pet size and accessories
+	if(isset($_POST['petSize'])){
+		$_SESSION['petSize'] = $_POST['petSize'];
+	}
+	if(isset($_POST['petAccessories'])){
+		$_SESSION['petAccessories'] = $_POST['petAccessories'];
+	}
+
 	$view = new Template();
 	echo $view->render("views/pet-order3.html");
 });
 
 $f3->route('POST /summary', function () {
-	if(isset($_POST['petSize'])){
-		$_SESSION['petSize'] = $_POST['petSize'];
+	if(isset($_POST['petName'])){
+		$_SESSION['petName'] = $_POST['petName'];
 	}
+
 	$view = new Template();
 	echo $view->render("views/order-summary.html");
 });

@@ -15,8 +15,19 @@
 <div class="container" id="main">
 	<h1>Thank you for your order!</h1>
 	<h3>Order Summary:</h3>
-	<p><strong>You ordered a {{@SESSION.petSize}} {{@SESSION.petType}} that is {{@SESSION.petColor}} and named
-		{{@SESSION.petName}}</strong></p>
+	<p class="text-capitalize">Pet Name: {{ @SESSION.petName}}</p>
+	<p class="text-capitalize">Pet Type: {{ @SESSION.petType}}</p>
+	<p class="text-capitalize">Pet Color: {{ @SESSION.petColor}}</p>
+	<p class="text-capitalize">Pet Size: {{ @SESSION.petSize}}</p>
+
+	<check if="{{ !empty(@SESSION.petAccessories) }}">
+		<p>Pet Accessories:</p>
+		<ol>
+			<repeat group="{{ @SESSION.petAccessories }}" value="{{ @accessory }}">
+				<li class="text-capitalize">{{ @accessory }}</li>
+			</repeat>
+		</ol>
+	</check>
 	<br>
 	<a href="{{@BASE}}">Return to Homepage</a>
 </div>

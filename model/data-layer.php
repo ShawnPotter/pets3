@@ -24,5 +24,5 @@ function getSizes(): array {
  * @return string[] - array of accessories
  */
 function getAccessories(): array {
-	return array('bow', 'shoes', 'rain jacket');
+	return array('bow', 'shoes', 'coat');
 }
